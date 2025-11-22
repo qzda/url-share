@@ -1,4 +1,4 @@
-# Url Share
+# URL Share
 
 A lightweight browser extension that helps you encode the current page URL into Base64 and copy it to your clipboard, making it easy to share encoded links.
 It also allows you to paste a previously encoded Base64 URL, decode it, and open the target page instantly.

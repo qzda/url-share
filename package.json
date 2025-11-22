@@ -1,7 +1,8 @@
 {
   "name": "url-share",
-  "displayName": "Url Share",
+  "displayName": "URL Share",
   "description": "manifest.json description",
+  "homepage": "https://github.com/qzda/url-share",
   "private": true,
   "version": "0.0.2",
   "type": "module",
