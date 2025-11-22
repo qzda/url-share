@@ -33,7 +33,7 @@ jobs:
       - name: Upload zip
         uses: softprops/action-gh-release@v2
         with:
-          files: .output/*
+          files: dist/*
 
       - run: npx changelogithub
         env:
