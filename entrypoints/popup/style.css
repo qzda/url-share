@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+input {
+  padding: 0.25rem 0.5rem;
+}
+
 #app {
   width: 100%;
   padding: 1rem;

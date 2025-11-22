@@ -1,6 +1,7 @@
 <script lang="ts" setup>
   import { browser } from "wxt/browser";
-  const input = ref<string>();
+  const inputAb = ref<string>();
+  const inputBa = ref<string>();
 
   function copyCurrentUrl() {
     browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -14,9 +15,9 @@
   }
 
   function open() {
-    if (input.value) {
+    if (inputAb.value) {
       try {
-        const url = new URL(atob(input.value));
+        const url = new URL(atob(inputAb.value));
 
         browser.tabs.create({
           url: url.href,
@@ -25,6 +26,14 @@
       } catch (error) {
         console.log(error);
       }
+    }
+  }
+
+  function copyUrl() {
+    if (inputBa.value) {
+      navigator.clipboard.writeText(btoa(inputBa.value)).then(() => {
+        inputBa.value = undefined;
+      });
     }
   }
 </script>
@@ -37,24 +46,50 @@
     >
       <input
         class="flex-auto"
-        style="padding: 0.25rem 0.5rem"
         type="text"
-        placeholder="Enter atob() resault"
-        v-model="input"
+        placeholder="Enter URL to open"
+        v-model="inputAb"
       />
       <button
-        v-if="input"
-        @click="input = undefined"
+        v-if="inputAb"
+        @click="inputAb = undefined"
       >
         x
       </button>
     </div>
 
     <button
-      v-if="input"
+      v-if="inputAb"
       @click="open"
     >
-      open
+      Open
+    </button>
+  </div>
+
+  <div class="flex">
+    <div
+      class="flex flex-auto"
+      style="gap: 0"
+    >
+      <input
+        class="flex-auto"
+        type="text"
+        placeholder="Enter URL to copy"
+        v-model="inputBa"
+      />
+      <button
+        v-if="inputBa"
+        @click="inputBa = undefined"
+      >
+        x
+      </button>
+    </div>
+
+    <button
+      v-if="inputBa"
+      @click="copyUrl"
+    >
+      Copy
     </button>
   </div>
 
